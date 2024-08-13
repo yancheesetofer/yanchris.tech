@@ -98,13 +98,25 @@ export const DATA = {
       company: "Agile Technica",
       href: "https://www.agiletechnica.com/",
       badges: [],
-      location: "Santa Clara, CA",
+      location: "South Tangerang, ID",
       title: "Software Engineer",
       logoUrl: "/agile.png",
       start: "June 2022",
       end: "Sep 2022",
       description:
         "As a back-end software developer, I have a proven track record of designing and developing software applications that meet business requirements. I quickly adapted to ERPNext environment and have extensive experience working with Python and JavaScript.",
+    },
+    {
+      company: "Faculty of Computer Science, University of Indonesia",
+      href: "https://cs.ui.ac.id/",
+      badges: [],
+      location: "Jakarta, ID",
+      title: "Teaching Assistant",
+      logoUrl: "/fasilkom.jpg",
+      start: "June 2023",
+      end: "May 2024",
+      description:
+        "Teaching Assistant for various courses, including Data Structures and Algorithms and Object-Oriented Programming",
     },
   ],
   education: [
