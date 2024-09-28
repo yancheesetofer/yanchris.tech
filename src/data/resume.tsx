@@ -24,6 +24,8 @@ export const DATA = {
     "Postgres",
     "Docker",
     "Google Cloud Platform",
+    "Product Management",
+    "OpenAI",
   ],
   navbar: [
     { href: "/", icon: HomeIcon, label: "Home" },
@@ -70,6 +72,17 @@ export const DATA = {
   },
 
   work: [
+    {
+      company: "Traveloka",
+      href: "https://www.traveloka.com",
+      badges: [],
+      location: "Jakarta",
+      title: "Product Management",
+      logoUrl: "/traveloka.png",
+      start: "September 2024",
+      end: "Now",
+      description: "Flight Operations",
+    },
     {
       company: "Axcel Partners",
       href: "https://axcel.partners",
