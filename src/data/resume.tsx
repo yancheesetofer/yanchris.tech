@@ -8,7 +8,7 @@ export const DATA = {
   location: "Jakarta, ID",
   locationLink: "https://www.google.com/maps/place/Jakarta",
   description:
-    "Product Engineer with interest in IT security. I love building things and helping people. Play saxophone or mobile legends in spare time.",
+    "Product Engineer with interest in IT security. I love building things and helping people. Play saxophone or read anything in spare time.",
   // summary:
   //   "At the end of 2022, I quit my job as a software engineer to go fulltime into building and scaling my own SaaS businesses. In the past, [I pursued a double degree in computer science and business](/#education), [interned at big tech companies in Silicon Valley](https://www.youtube.com/watch?v=d-LJ2e5qKdE), and [competed in over 21 hackathons for fun](/#hackathons). I also had the pleasure of being a part of the first ever in-person cohort of buildspace called [buildspace sf1](https://buildspace.so/sf1).",
   summary:
@@ -77,11 +77,12 @@ export const DATA = {
       href: "https://www.traveloka.com",
       badges: [],
       location: "Jakarta",
-      title: "Product Management",
+      title: "Product Management - Flight",
       logoUrl: "/traveloka.png",
       start: "September 2024",
       end: "Now",
-      description: "Flight Operations",
+      description:
+        "Assigned to flight system integration and performance sub team. Working closely with international flight aggregators (main focus) & airline API service.",
     },
     {
       company: "Axcel Partners",
