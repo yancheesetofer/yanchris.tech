@@ -73,6 +73,17 @@ export const DATA = {
 
   work: [
     {
+      company: "GoTo Financial",
+      href: "https://www.gotocompany.com/en/products/goto-financial",
+      badges: [],
+      location: "Jakarta",
+      title: "Incoming Software Engineer",
+      logoUrl: "/traveloka.png",
+      start: "April 2025",
+      end: "Now",
+      description: "Campus Hiring",
+    },
+    {
       company: "Traveloka",
       href: "https://www.traveloka.com",
       badges: [],
@@ -80,7 +91,7 @@ export const DATA = {
       title: "Product Management - Flight",
       logoUrl: "/traveloka.png",
       start: "September 2024",
-      end: "Now",
+      end: "March 2025",
       description:
         "Assigned to flight system integration and performance sub team. Working closely with international flight aggregators (main focus) & airline API service.",
     },
@@ -104,7 +115,7 @@ export const DATA = {
       title: "Software Engineer",
       logoUrl: "/asyx.png",
       start: "April 2023",
-      end: "Aug 2023",
+      end: "August 2023",
       description:
         "Developed Financial Supply Chain Management Application (Xchange4) for Banking Industry with ISO 27001 Implementation. Serving international Financial Institutions in Indonesia, Singapore, Kenya, and more.",
     },
@@ -116,7 +127,7 @@ export const DATA = {
       title: "Software Engineer",
       logoUrl: "/agile.png",
       start: "June 2022",
-      end: "Sep 2022",
+      end: "September 2022",
       description:
         "As a back-end software developer, I have a proven track record of designing and developing software applications that meet business requirements. I quickly adapted to ERPNext environment and have extensive experience working with Python and JavaScript.",
     },
