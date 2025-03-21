@@ -78,7 +78,7 @@ export const DATA = {
       badges: [],
       location: "Jakarta",
       title: "Incoming Software Engineer",
-      logoUrl: "/traveloka.png",
+      logoUrl: "/goto-financial.png",
       start: "April 2025",
       end: "Now",
       description: "Campus Hiring",
