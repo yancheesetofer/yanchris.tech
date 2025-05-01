@@ -1,0 +1,117 @@
+---
+title: "YAGNI: Why “Future-Proof” Code Might Be Your Biggest Past-Time ⏳🚫"
+publishedAt: "2025-05-1"
+summary: "**TL;DR** – “You Aren’t Gonna Need It” (YAGNI) is the software-engineering glow-up you didn’t know you needed. Build **only** what’s required **right now**. Everything else?? Save it for your vision board."
+---
+
+> **TL;DR** – “You Aren’t Gonna Need It” (YAGNI) is the software-engineering glow-up you didn’t know you needed. Build **only** what’s required **right now**. Everything else? Save it for your vision board.
+
+---
+
+## 1. Everyday Team Scenes 🎬
+
+| Scene | What it looks like | Feels like |
+|-------|-------------------|------------|
+| **“What-If-Apocalypse” Planning** | Colleague sketches *five* database shards “for when we hit fifty billion users.” | ☠️ *Bruh* we have 5 monthly actives. |
+| **Premature Framework Frenzy** | Someone forks six libraries because “We might migrate to GraphQL later.” | 🥴 RIP onboarding docs. |
+| **Infinite Abstraction Layer** | A “helperFactoryAdapterManager” shows up in the PR. | 🤡 IntelliSense crying in the club. |
+
+I call it **“feature FOMO”**—the fear that *future* requirements will roast us if we don’t prep today.
+
+---
+
+## 2. Why This Smacks Extra Hard for Juniors (like me and you) 💥
+
+* We’re grinding to prove yourself, so “more code” feels like “more value..”  
+* Senior devs throw 4-D chess architecture terms; you nod, then secretly google.  
+* Every new layer is another rabbit hole when you still fight Git rebases.
+
+Result? You spend two sprints future-proofing vaporware and zero time learning fundamentals that actually ship value.
+
+---
+
+## 3. Let Yan introduce u: **YAGNI** 🦸‍♂️
+
+Coined in Extreme Programming lore, **You Aren’t Gonna Need It** means:
+
+> **don’t implement a feature until the day it becomes undeniably necessary.**
+
+It’s not laziness—it’s *focus*. You trade speculative complexity for shipping speed and user feedback.
+
+---
+
+## 4. The Glow-Ups (Pros) ✨
+
+1. **Lean Codebase** – Fewer files === faster mental parse 🤖.  
+2. **Speed-to-Market** – No detours → users test *today*, not in Q4.  
+3. **Maintenance Zen** – Less surface area means fewer security CVEs and bug hunts.  
+4. **Learning Loop** – Quick releases give you real-world data, not hypothetical hot takes.
+
+---
+
+## 5. The Trade-Offs (Cons) 🧐
+
+* **Rework Risk** – If that “future” need *does* arrive, you’ll need to code (we love it tho)
+* **Scalability Anxiety** – YAGNI forces *constraints*. Some "friends" panic without “horizontal scaling” slides.  
+* **Stakeholder Persuasion** – “Trust me, we’ll cross that bridge later” requires social capital you may still be earning.
+
+---
+
+### 👩‍💻 Code Example – YAGNI in Action
+
+```python
+"""
+Scenario: you just need to count items in a collection … **today**.
+
+Below are two versions:
+
+1. ❌  “Future-Proof Fever Dream” – adds factories, subclasses, and indirection
+       for mythical data sources that don’t exist yet.
+2. ✅  “YAGNI” – a three-line function that ships value right now.
+"""
+# ---------- ❌  Version 1: Future-Proof Fever Dream ---------------------------
+class CounterFactory:
+    """Emits different counter strategies for hypothetical data types."""
+    def create(self, source_type: str):
+        if source_type == "list":
+            return ListCounter()
+        elif source_type == "set":
+            return SetCounter()
+        # Someday: GraphCounter, StreamCounter, QuantumCounter …
+        raise NotImplementedError("Source type not yet supported")
+
+class BaseCounter:
+    def count(self, data):         # pragma: no cover
+        raise NotImplementedError
+
+class ListCounter(BaseCounter):
+    def count(self, data):
+        # extra logging, metrics, retry logic—because why not?
+        return len(data)
+
+class SetCounter(BaseCounter):
+    def count(self, data):
+        return len(data)
+
+factory = CounterFactory()
+counter = factory.create("list")
+print(counter.count([1, 2, 3]))      # ➜ 3
+
+
+# ---------- ✅  Version 2: YAGNI ---------------------------------------------
+def count_items(data):
+    """Do the ONE thing we need *today*—count items in a list."""
+    return len(data)
+
+print(count_items([1, 2, 3]))         # ➜ 3
+```
+
+## 6. Conclusion: Ship Now, Flex Later 🚀
+
+life-hack: treat code like TikTok drafts—post the one that’s *ready*, not the one that might be viral *next year*. Future-proofing feels productive, but shiny abstractions won’t save you from missed deadlines (or bored users).
+
+So next time a dizzcussion spirals into “edge-case Olympics,” channel your inner YAGNI, bro:
+
+> **“Love the energy, folks, but let’s build **only** what solves today’s pain. Future us can take the sequel.”**
+
+Your roadmap, teammates, and sanity will thank you. 🙌
