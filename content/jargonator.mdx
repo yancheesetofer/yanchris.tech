@@ -1,0 +1,211 @@
+---
+title: "Technical Design: Corporate Jargon Translator API Library (For Learning Purpose Only)"
+publishedAt: "2025-05-14"
+summary: "a Go-based HTTP server that translates between plain English and exaggerated corporate jargon using OpenAI's API"
+---
+
+## Overview
+
+in this document, I'll walk you through the development of the Jargonator library, a Go-based HTTP server that translates between plain English and exaggerated corporate jargon using OpenAI's API. While the functionality may seem straightforward, the design decisions and architecture show how to build a reusable, maintainable library that other developers can easily integrate into their apps
+
+(disclaimer: this project is solely built for my http server learning purpose only)
+
+## Business Context
+
+Corporate communication (at least from my experience) often suffers from:
+
+- Excessive jargon that obscures simple ideas
+- Unnecessarily complex language that reduces clarity
+- Verbosity that wastes time and reduces engagement
+
+Simultaneously, plain language can sometimes lack the authoritative tone expected in business settings.
+
+**Goal**: Build a library that provides a humorous yet practical API for translating between plain English and corporate jargon, allowing developers to integrate this functionality into their own applications, chatbots, or tools.
+
+## Technical Architecture
+
+I've adopted a modular, interface-driven design that follows Clean Architecture principles for several reasons:
+
+### Separation of Concerns
+
+each component in the library has a single responsibility:
+
+- **OpenAI Client**: interfaces with the OpenAI API
+- **Prompter**: Constructs specialized prompts for translations
+- **Translation Service**: Orchestrates between Prompter and OpenAI Client
+- **HTTP Handlers**: manages HTTP input/output
+- **Server**: Ties everything together with configuration
+
+this clear separation makes the code easier to understand, test, and extend (hopefully)
+
+### Technical Decision: Interface-Based Design
+
+**Pros:**
+- compponents can be mocked easily for testing
+- implementation details can change without affecting dependent components
+- Users can provide custom implementations for specific needs
+- Clean dependency direction from outer layers to inner layers
+
+**Cons:**
+- Introduce more abstraction than might be needed for simple use cases
+- more verbose code with interfaces and implementations
+- can be over-engineered for small applications
+- May create a minor learning curve for new developers like myself
+
+I chose this approach because the benefits of testability and extensibility outweighed the costs of additional abstractions, especially given the need for mocking the OpenAI API during development and testing.
+
+### Folder Structure
+
+```
+jargonatorlib/
+├── config.go           # Configuration struct and validation
+├── jargonator.go       # Main library entry points (Server struct, Start/Shutdown)
+├── handlers/
+│   └── translate.go    # HTTP handlers for /to-jargon and /to-plain
+├── translation/
+│   ├── service.go      # Core translation logic
+│   ├── prompter.go     # Prompt generation for OpenAI
+│   ├── openai_api.go   # OpenAI API implementation
+│   └── openai_client.go # OpenAI client with validation
+└── examples/
+    └── simple-server/   # Example server implementation
+```
+
+## Code Overview
+
+### Configuration (Config)
+
+```go
+type Config struct {
+    Port                  string
+    OpenAIAPIKey          string
+    OpenAIModel           string
+    RequestTimeoutSeconds int
+}
+```
+
+### Technical Decision: Configuration Struct with Validation
+
+**Pros:**
+- centralize all configuration in one place
+- Validates configuration early to fail fast
+- type safety compared to environment variables
+
+**Cons:**
+- More structured than simple environment variables
+- requires more code than direct access to environment
+- again, another layer for simple configurations
+- Requires validation maintenance when adding fields
+
+I chose this approach for its robustness and type safety, especially when handling critical configuration like API keys and timeouts.
+
+### Server Component
+
+```go
+type Server struct {
+    config     Config
+    httpServer *http.Server
+}
+
+func NewServer(cfg Config) (*Server, error)
+func (s *Server) Start() error
+func (s *Server) Shutdown(ctx context.Context) error
+```
+
+### Technical Decision: Using Standard http.Server
+
+**Pros:**
+- Leverages Go's standard library
+- Well understood by Go developers
+- No external dependencies
+- Provides graceful shutdown capabilities
+
+**Cons:**
+- less feature rich than frameworks like Gin
+- Requires more boilerplate for advanced features
+- Manual routing setup
+- No built-in middleware system
+
+### Translation Service
+
+```go
+type Service struct {
+    client   OpenAIClient
+    prompter PrompterInterface
+    model    string
+}
+
+func (s *Service) TranslateToJargon(text string) (string, error)
+func (s *Service) TranslateToPlain(text string) (string, error)
+```
+
+### Technical Decision: Specialized Prompter Component
+
+**Pros:**
+- Separates prompt engineering from API interaction
+- Allows prompt refinement without changing other components
+- Makes the translation "personality" configurable
+- Isolates the creative aspect of the system
+
+**Cons:**
+- Additional abstraction for a relatively simple operation
+- could be considered overengineering for basic prompting
+- Requires maintenance of prompt templates
+
+The Prompter component was deemed essential because the quality of the translations depends heavily on well-crafted prompts, and this design allows prompt improvements without affecting the rest of the system.
+
+### OpenAI Client
+
+```go
+type OpenAIClientImpl struct {
+    api OpenAIAPI
+}
+
+func (c *OpenAIClientImpl) GetCompletion(prompt string, model string) (string, error)
+```
+
+### Technical Decision: Official OpenAI Client vs. Custom Implementation
+
+**Pros of Official Client:**
+- maintaned by OpenAI and its commmunity
+- Automatic updates for API changes
+- Proper error handling
+- Type safety for requests/responses
+
+**Cons of Official Client:**
+- Additional dependency
+- Version compatibility concerns
+
+I chose the official OpenAI client for its reliability, maintenance, and proper handling of things.
+
+
+## Running the Project
+
+### Build
+```bash
+go build -o jargon-server ./examples/simple-server
+```
+
+### Run Example Server
+```bash
+export OPENAI_API_KEY="your-openai-api-key"
+./jargon-server
+```
+
+### Test
+```bash
+go test ./...
+```
+
+## Conclusion
+
+The Jargonator lib demonstrates how even a simple functionality can benefit from thoughtful architecture. by following clean architecture principles, using interface-based design, and employing TDD, we've created a maintainable library that:
+
+1. is thoroughly tested at all levels
+2. Can be easily extended or modified
+3. Separates concerns for better maintainability
+
+the project successfully fulfills its goal of providing a humorous yet practical tool for translating between plain English and corporate jargon, packaged as a library that other developers can easily integrate into their app.
+
+view and clone the full project here:
+[GitHub Repository — Jargonator](https://source.golabs.io/gotobootcamp13/library-app-yan-go)
