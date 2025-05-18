@@ -77,7 +77,7 @@ export const DATA = {
       href: "https://www.gotocompany.com/en/products/goto-financial",
       badges: [],
       location: "Jakarta",
-      title: "Incoming Software Engineer",
+      title: "Associate Software Engineer",
       logoUrl: "/goto-financial.png",
       start: "April 2025",
       end: "Now",
@@ -88,12 +88,12 @@ export const DATA = {
       href: "https://www.traveloka.com",
       badges: [],
       location: "Jakarta",
-      title: "Product Management - Flight",
+      title: "Technical Product Manager - Flight",
       logoUrl: "/traveloka.png",
       start: "September 2024",
       end: "March 2025",
       description:
-        "Assigned to flight system integration and performance sub team. Working closely with international flight aggregators (main focus) & airline API service.",
+        "Assigned to flight system integration and performance sub team. Working closely with international flight aggregators as my main focus & airline API service. Worth-to-mention: millions of USD added to average daily aggregator issuances.",
     },
     {
       company: "Axcel Partners",
