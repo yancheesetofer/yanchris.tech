@@ -1,0 +1,46 @@
+---
+title: "Understanding CI before jumping in as a Junior SWE"
+publishedAt: "2025-05-18"
+summary: "**TL;DR** – “Continuous Integration (CI) gives you quick safety nets, catches tiny bugs before they grow, and makes teamwork feel smooth from your first line of code([Atlassian][1])"
+---
+
+CI flags build failures and test errors right after each push, so you spend less time hunting down issues([Zeet][2]). Rapid feedback helps you learn what works in minutes instead of days([about.gitlab.com][3]). For a junior engineer, mastering CI tools like Jenkins or GitHub Actions not only sharpens your skills but also makes your resume stand out([Medium][4]).
+
+## Why CI Matters Early
+
+Frequent integration keeps your main branch stable and avoids late-stage merge nightmares([martinfowler.com][5]). Running tests automatically after each commit means you catch errors while the context is fresh([Zeet][2]). Fast feedback loops speed up your learning and let you iterate without waiting on manual checks([about.gitlab.com][3]). CI also nudges you to write automated tests, boosting code quality (hopefully :D) from the start([Reddit][6]).
+
+## Perks for Junior Engineers
+
+Many entry-level roles list CI/CD experience as a must-have skill on job boards([Medium][4]). Shared build status and test results improve team communication, since everyone sees the same pipeline health in real time([Software Engineering Stack Exchange][7]). Watching a green build after a big change gives you confidence that your code works as intended([CircleCI][8]).
+
+## Getting Started
+
+Choose a service that fits your project. GitHub Actions works right in your repo([GitHub Docs][9]) (Me myself use this for my personal projects on Vercel & GCP) and GitLab CI shines for merge-request pipelines([about.gitlab.com][3]). For self-hosted control, Jenkins (I used this when working at ASYX International) offers thousands of plugins and scales across machines([Medium][10]).
+Start simple: build and test on every push before adding more steps([Atlassian][1]). Version your CI config in the same repo, review changes in pull requests, and refactor it like any other code([martinfowler.com][5]). Pair with a teammate or follow a real-world tutorial to see how an actual pipeline runs([Software Engineering Stack Exchange][7]).
+
+---
+
+**References (I didn't read them all, just quoting important parts :] )**
+
+* What is Continuous Integration | Atlassian ([Atlassian][1])
+* 20 Benefits of Continuous Integration for Engineering Teams | Zeet.co ([Zeet][2])
+* 4 Benefits of CI/CD | GitLab ([about.gitlab.com][3])
+* CI/CD For Junior Developers | Arvin Fernandez ([Medium][4])
+* Continuous Integration | Martin Fowler ([martinfowler.com][5])
+* What is the purpose of Continuous Integration? | Reddit ([Reddit][6])
+* Can you do continuous deployment with junior programmers? | Stack Overflow ([Software Engineering Stack Exchange][7])
+* What is continuous integration (CI)? | CircleCI ([CircleCI][8])
+* Understanding GitHub Actions | GitHub Docs ([GitHub Docs][9])
+* Why use Jenkins Over the Other Tools? | Medium ([Medium][10])
+
+[1]: https://www.atlassian.com/continuous-delivery/continuous-integration?utm_source=chatgpt.com "What is Continuous Integration | Atlassian"
+[2]: https://zeet.co/blog/benefits-of-continuous-integration?utm_source=chatgpt.com "20 Benefits of Continuous Integration for Engineering Teams | Zeet.co"
+[3]: https://about.gitlab.com/blog/positive-outcomes-ci-cd/?utm_source=chatgpt.com "4 Benefits of CI/CD - GitLab"
+[4]: https://arvinf07.medium.com/ci-cd-for-junior-developers-7799f1655cc9?utm_source=chatgpt.com "CI/CD For Junior Developers - Arvin Fernandez - Medium"
+[5]: https://martinfowler.com/articles/continuousIntegration.html?utm_source=chatgpt.com "Continuous Integration - Martin Fowler"
+[6]: https://www.reddit.com/r/devops/comments/u6uari/what_is_the_purpose_of_continuous_integration_im/?utm_source=chatgpt.com "What is the purpose of Continuous Integration? I'm familiarizing ..."
+[7]: https://softwareengineering.stackexchange.com/questions/345322/can-you-do-continuous-deployment-with-junior-programmers?utm_source=chatgpt.com "Can you do continuous deployment with junior programmers?"
+[8]: https://circleci.com/continuous-integration/?utm_source=chatgpt.com "What is continuous integration (CI)? - CircleCI"
+[9]: https://docs.github.com/articles/getting-started-with-github-actions?utm_source=chatgpt.com "Understanding GitHub Actions"
+[10]: https://medium.com/devops-technical-notes-and-manuals/why-use-jenkins-over-the-other-tools-jenkins-pros-and-cons-d2d4811ae81c?utm_source=chatgpt.com "Why use Jenkins Over the Other Tools? Jenkins Pros And Cons."
