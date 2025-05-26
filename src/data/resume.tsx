@@ -19,6 +19,7 @@ export const DATA = {
     "Next.js",
     "Typescript",
     "Springboot",
+    "Flutter",
     "Python",
     "Java",
     "Postgres",
@@ -81,7 +82,7 @@ export const DATA = {
       logoUrl: "/goto-financial.png",
       start: "April 2025",
       end: "Now",
-      description: "Campus Hiring",
+      description: "Been a rigorous journey with over 3000 applicants (~0.6%) and full of learning.",
     },
     {
       company: "Traveloka",
